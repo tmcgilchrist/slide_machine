@@ -1,0 +1,18 @@
+%%-*- mode: erlang -*-
+{application, slide_machine_web,
+ [
+  {description, "The web component of slide_machine."},
+  {vsn, "1"},
+  {modules, []},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  inets,
+                  crypto,
+                  mochiweb,
+                  webmachine
+                 ]},
+  {mod, { slide_machine_web_app, []}},
+  {env, []}
+ ]}.
