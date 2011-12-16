@@ -36,3 +36,9 @@ You should find in this directory:
       /deps - the erlang library dependencies 
       /ebin - compiled beam files for the erlang VM
       /src  - Erlang source code
+      
+### Helpful Resources
+ * [CloudEdit Backbone.js tutorial](http://www.jamesyu.org/2011/01/27/cloudedit-a-backbone-js-tutorial-by-example/)
+ * [CloudEdit with Erlang and Webmachine P1](http://blog.erlware.org/2011/02/08/ecloudedit-erlang-webmachine-and-backbone-js/)
+ * [CloudEdit with Erlang and Webmachine P2](http://blog.erlware.org/2011/02/12/ecloudedit-part-2-couchdb/)
+ * [Webmachine, ErlyDTL and Riak by OJ](http://buffered.io/2010/10/13/webmachine-erlydtl-and-riak-part-3/)
