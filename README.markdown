@@ -20,9 +20,19 @@ at all.
 
 
 ### Layout
+You should find in this directory:
 
-slide_machine_web
- -> deps - the erlang library dependencies for the web application
- -> ebin - compiled beam files for the erlang VM
- -> src  - Erlang source code
- -> priv - is where all the html and Javascript files are placed.
+    README.markdown : this file
+    Makefile : simple make commands
+    rebar : the Rebar build tool for Erlang applications
+    rebar.config : configuration for Rebar
+    apps : Erlang modules that make up this application
+    /slide_machine_web : webmachine application
+      /deps - the erlang library dependencies for the web application
+      /ebin - compiled beam files for the erlang VM
+      /src  - Erlang source code
+      /priv - is where all the html and Javascript files are placed.
+    /slide_machine_core : core logic to mediate between web app and riak db
+      /deps - the erlang library dependencies 
+      /ebin - compiled beam files for the erlang VM
+      /src  - Erlang source code
