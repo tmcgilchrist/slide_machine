@@ -1,0 +1,12 @@
+{application, slide_machine_core,
+ [
+  {description, "Core functionality for slide_machine."},
+  {vsn, "0.0.1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { slide_machine_core_app, []}},
+  {env, []}
+ ]}.
