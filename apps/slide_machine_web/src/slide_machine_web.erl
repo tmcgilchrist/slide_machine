@@ -4,7 +4,7 @@
 %% @doc slide_machine_web startup code
 
 -module(slide_machine_web).
--author('author <author@example.com>').
+-author('Tim McGilchrist <author@example.com>').
 -export([start/0, start_link/0, stop/0]).
 
 ensure_started(App) ->
@@ -21,7 +21,7 @@ start_link() ->
     ensure_started(inets),
     ensure_started(crypto),
     ensure_started(mochiweb),
-    application:set_env(webmachine, webmachine_logger_module, 
+    application:set_env(webmachine, webmachine_logger_module,
                         webmachine_logger),
     ensure_started(webmachine),
     slide_machine_web_sup:start_link().
@@ -32,7 +32,7 @@ start() ->
     ensure_started(inets),
     ensure_started(crypto),
     ensure_started(mochiweb),
-    application:set_env(webmachine, webmachine_logger_module, 
+    application:set_env(webmachine, webmachine_logger_module,
                         webmachine_logger),
     ensure_started(webmachine),
     application:start(slide_machine_web).
