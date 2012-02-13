@@ -1,7 +1,3 @@
-%% @author author <author@example.com>
-%% @copyright YYYY author.
-%% @doc Example webmachine_resource.
-
 -module(slide_machine_web_resource).
 -export([init/1, to_html/2]).
 
