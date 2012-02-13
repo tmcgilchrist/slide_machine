@@ -11,6 +11,22 @@ at all.
 * author => author of a particular deck of slides
 
 #### TODO
+* provided basic slide resource and getting passed in the id eg /slide/[:id]
+  next step is to build a riak backend to retrieve data from. *******
+
+slide
+    id
+    contents/json
+    next/link
+    previous/link
+
+{ slide : {
+    name: String
+    content : { json }
+    }
+}
+
+* need way of packaging javascript
 * start with modeling a basic slide and presenting it using backbone.js and
   html.
 * backbone.js UI presenting a deck
@@ -33,10 +49,10 @@ You should find in this directory:
       /src  - Erlang source code
       /priv - is where all the html and Javascript files are placed.
     /slide_machine_core : core logic to mediate between web app and riak db
-      /deps - the erlang library dependencies 
+      /deps - the erlang library dependencies
       /ebin - compiled beam files for the erlang VM
       /src  - Erlang source code
-      
+
 ### Helpful Resources
  * [CloudEdit Backbone.js tutorial](http://www.jamesyu.org/2011/01/27/cloudedit-a-backbone-js-tutorial-by-example/)
  * [CloudEdit with Erlang and Webmachine P1](http://blog.erlware.org/2011/02/08/ecloudedit-erlang-webmachine-and-backbone-js/)
