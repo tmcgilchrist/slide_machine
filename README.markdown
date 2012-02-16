@@ -36,6 +36,10 @@ slide
 * backbone.js UI presenting a library
 *
 
+### BUGS: (Not that there are any)
+
+* /slide/id works but want /slide to fail more gracefully.
+
 
 ### Layout
 You should find in this directory:
