@@ -11,8 +11,9 @@ at all.
 * author => author of a particular deck of slides
 
 #### TODO
+* try out ErlyDTL for templating html resources.
 * provided basic slide resource and getting passed in the id eg /slide/[:id]
-  next step is to build a riak backend to retrieve data from. *******
+  next step is to build a riak backend to retrieve data from.
 
 slide
     id
@@ -33,6 +34,7 @@ slide
 * riak storage of slides
 * webmachine rest interface to the resources, slide and deck
 * backbone.js UI presenting a library
+*
 
 
 ### Layout
