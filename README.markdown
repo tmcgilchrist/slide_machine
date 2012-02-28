@@ -11,30 +11,31 @@ at all.
 * author => author of a particular deck of slides
 
 #### TODO
-* try out ErlyDTL for templating html resources.
-* provided basic slide resource and getting passed in the id eg /slide/[:id]
-  next step is to build a riak backend to retrieve data from.
+* integrate Riak single node into application
+* retrieve slide contents from riak backend.
 
-slide
-    id
-    contents/json
-    next/link
-    previous/link
+    slide
+        id
+        contents/json
+        next/link
+        previous/link
 
-{ slide : {
-    name: String
-    content : { json }
+    { slide : {
+        name: String
+            content : { json }
+        }
     }
-}
 
-* need way of packaging javascript
+* integration tests for OTP applications? Need something!
+* how can I compile and reload resources without killing erl?
+* need way of packaging javascript (CURRENT)
 * start with modeling a basic slide and presenting it using backbone.js and
   html.
 * backbone.js UI presenting a deck
-* riak storage of slides
+* riak storage of slides, needs a single Riak node setup
 * webmachine rest interface to the resources, slide and deck
 * backbone.js UI presenting a library
-*
+* be nice to have a script to generate a new resource, similar to rails?
 
 ### BUGS: (Not that there are any)
 
@@ -64,3 +65,60 @@ You should find in this directory:
  * [CloudEdit with Erlang and Webmachine P1](http://blog.erlware.org/2011/02/08/ecloudedit-erlang-webmachine-and-backbone-js/)
  * [CloudEdit with Erlang and Webmachine P2](http://blog.erlware.org/2011/02/12/ecloudedit-part-2-couchdb/)
  * [Webmachine, ErlyDTL and Riak by OJ](http://buffered.io/2010/10/13/webmachine-erlydtl-and-riak-part-3/)
+
+
+Basically the root url shows a preview collection of slide decks
+|------------------------------------------------------------
+|                                                           |
+|      |------|              |------|                       |
+|      | deck |              | deck |                       |
+|      |------|              |------|                       |
+|                                                           |
+|                                                           |
+|      |------|              |------|                       |
+|      | deck |              | deck |                       |
+|      |------|              |------|                       |
+|                                                           |
+|                                                           |
+|      |------|              |------|                       |
+|      | deck |              | deck |                       |
+|      |------|              |------|                       |
+|                                                           |
+|------------------------------------------------------------
+
+
+Clicking on a deck brings you to Overview of Deck.
+ show author, summary and TOC ie slide names.
+|------------------------------------------------------------
+|            |                                              |
+| Title      |          Current Slide                       |
+| 1.         |                                              |
+| 2.         |                                              |
+| 3.         |                                              |
+| etc        |                                              |
+|            |                                              |
+|            |                                              | ===> next slide
+|            |                                              |
+|            |                                              |
+|            |                                              |
+|            |                                              |
+|            |                                              |
+|            |                                              |
+|            |                                              |
+|            |           footer: Title                      |
+|------------------------------------------------------------
+
+You can click on each slide on the side to go to that one.
+
+There is a backwards and forwards buttons to navigate.
+
+
+Deck => individual presentation, contains many slides
+Slide => individual page in a presentation
+
+Player => handles state of current presentation, ie current slide, current deck.
+
+
+ NOTES:
+Render all 3 views on the page when the main page is hit, hide any that we
+don't need.
