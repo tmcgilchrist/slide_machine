@@ -11,8 +11,8 @@
 init([]) ->
     {ok, #context{}}.
 
-allowed_methods(ReqData, Context) ->
-    {['HEAD', 'GET'], ReqData, Context}.
+allowed_methods(ReqData, State) ->
+    {['HEAD', 'GET'], ReqData, State}.
 
 to_html(ReqData, State) ->
    Path = wrq:path_info(id, ReqData),
@@ -20,10 +20,11 @@ to_html(ReqData, State) ->
     {ok, Content} = slide_dtl:render([{param, Path}]),
     {Content, ReqData, State}.
 
-to_json(ReqData, Context) ->
+to_json(ReqData, State) ->
+    %% TODO Grab the data from riak.
     JsonDoc = "{ slide : {
                           name: Introduction
                           content: Things
                          }
                }",
-    {JsonDoc, ReqData, Context}.
+    {JsonDoc, ReqData, State}.
