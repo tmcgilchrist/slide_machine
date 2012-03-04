@@ -66,6 +66,9 @@ You should find in this directory:
  * [CloudEdit with Erlang and Webmachine P2](http://blog.erlware.org/2011/02/12/ecloudedit-part-2-couchdb/)
  * [Webmachine, ErlyDTL and Riak by OJ](http://buffered.io/2010/10/13/webmachine-erlydtl-and-riak-part-3/)
 
+### Erlang Testing ###
+
+ https://github.com/eproxus/meck
 
 Basically the root url shows a preview collection of slide decks
 |------------------------------------------------------------
@@ -118,7 +121,16 @@ Slide => individual page in a presentation
 
 Player => handles state of current presentation, ie current slide, current deck.
 
+Have multiple views backed by the same model or collection? Provide a
+DeckThumbnailView and a DeckView backed by the decks collection. One shows an
+image, or author name, while the other shows just the title?
+
+What does the tagName and ClassName within a view do again?
 
  NOTES:
 Render all 3 views on the page when the main page is hit, hide any that we
 don't need.
+
+ Javascript Questions:
+
+ - what is the pattern for JS object initialisation? How does it interact with JSON?
