@@ -29,30 +29,18 @@
 
     <!-- Center panel Slide Deck information-->
     <script type="text/template" id="deck-info-template">
-       <span class="deck-title"><%= title %></span>
-       <span class="deck-author"><%= author %></span>
+       <div class="deck-title"><%= title %></div>
+       <div class="deck-author">Author: <%= author %></div>
        <div class="deck-summary"><%= summary %></div>
     </script>
 
     <script type="text/template" id="playlist-template">
       <h1>Playlist</h1>
+      <div class="deck-info"></div>
       <nav>
         <button class="control prev">Prev</button>
         <button class="control next">Next</button>
       </nav>
-      <ul class="decks">
-      </ul>
-    </script>
-
-
-    <!-- Navigate through the Deck -->
-    <script type="text/template" id="navigation-template">
-      <h1><%= model.title %> - Navigation</h1>
-      <nav>
-        <button class="control prev">Prev</button>
-        <button class="control next">Next</button>
-      </nav>
-      <ul class="slides">
     </script>
 
     <!-- Display contents of a single slide -->

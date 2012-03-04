@@ -117,18 +117,20 @@
   });
 
 
-  window.PlaylistDeckView = DeckView.extend({
+  window.PlaylistDeckView = Backbone.View.extend({
+    tag: 'div',
+    className: 'deck-info',
 
     initialize: function() {
       _.bindAll(this, 'render');
 
-      this.player = this.options.player;
+      this.deck   = this.options.deck;
+      this.template = _.template($('#deck-info-template').html());
     },
 
     render: function() {
-      console.log('render');
-//      $(this.el).html(this.template(this.model.toJSON()));
-//      return this;
+      $(this.el).html(this.template(this.deck.toJSON()));
+      return this;
     }
   });
 
@@ -149,22 +151,18 @@
 
     render: function() {
       $(this.el).html(this.template(this.player.toJSON()));
-
       return this;
     },
 
     renderDeck: function(deck) {
-      console.log("deck:", deck);
+      var view = new PlaylistDeckView({
+        deck: this.player.currentDeck()
+      });
+      this.$('div').append(view.render().el);
     },
 
     queueDeck: function(deck) {
-      var view = new PlaylistDeckView({
-        model: deck,
-        player: this.player,
-        playlist: this.collection
-      });
-      this.$("ul").append(view.render().el);
-
+      this.player.set('deck', deck);
     }
   });
 
