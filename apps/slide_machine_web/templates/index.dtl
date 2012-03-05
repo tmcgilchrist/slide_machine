@@ -21,26 +21,28 @@
     </script>
 
     <!-- Render an individual deck -->
-    <script type="text/template" id="deck-thumbnail-template">
-      <span class="deck-title"><%= title %></span>
-      <span class="deck-author"><%= author %></span>
-      <button class="queue add">View</button>
+    <script type="text/template" id="library-deck-template">
+
+      <div class="deck-title">
+        <button class="queue add">View</button>
+        <%= title %>
+      </div>
+      <div class="deck-author"><%= author %></div>
     </script>
 
-    <!-- Center panel Slide Deck information-->
-    <script type="text/template" id="deck-info-template">
-       <div class="deck-title"><%= title %></div>
-       <div class="deck-author">Author: <%= author %></div>
-       <div class="deck-summary"><%= summary %></div>
-    </script>
-
-    <script type="text/template" id="playlist-template">
-      <h1>Playlist</h1>
+    <script type="text/template" id="player-template">
+      <h1>Player</h1>
       <div class="deck-info"></div>
       <nav>
         <button class="control prev">Prev</button>
         <button class="control next">Next</button>
       </nav>
+    </script>
+
+    <script type="text/template" id="player-deck-template">
+       <div class="deck-title"><%= title %></div>
+       <div class="deck-author">Author: <%= author %></div>
+       <div class="deck-summary"><%= summary %></div>
     </script>
 
     <!-- Display contents of a single slide -->

@@ -5,7 +5,7 @@ body {
 .decks {
 }
 
-.deck{
+.deck {
     font-style: italic;
 }
 
@@ -16,8 +16,12 @@ body {
 }
 
 .deck button.queue {
-
 }
 
 .library {
+}
+
+.player {
+    color: #eee;
+    background-color: #333;
 }

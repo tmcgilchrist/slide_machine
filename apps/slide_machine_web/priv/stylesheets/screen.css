@@ -196,7 +196,7 @@ ul.posts span {
     margin-bottom: 1em;
 }
 
-.playlist {
+.player {
     position: absolute;
     width: 30%;
     padding: 0 3%;
@@ -211,6 +211,8 @@ nav {
 
 
 library {
-        margin-left: 36%;
+        margin-left: 40%;
         padding: 0.1em 2%;
+        position: relative;
+        float: right;
 }

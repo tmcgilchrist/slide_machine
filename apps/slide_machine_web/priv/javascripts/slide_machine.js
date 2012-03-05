@@ -63,32 +63,6 @@
   //--------------------------------------------------------------
   //         Views
   //--------------------------------------------------------------
-  window.DeckView = Backbone.View.extend({
-    tagName: 'li',
-    className: 'deck',
-
-    initialize: function() {
-      _.bindAll(this, 'render');
-      this.model.bind('change', this.render);
-      this.template = _.template($('#deck-thumbnail-template').html());
-    },
-
-    render: function() {
-      $(this.el).html(this.template(this.model.toJSON()));
-      return this;
-    }
-  });
-
-  window.LibraryDeckView = DeckView.extend({
-    events: {
-      'click .queue.add': 'select'
-    },
-
-    select: function() {
-      this.collection.trigger('select', this.model);
-    }
-  });
-
   window.LibraryView = Backbone.View.extend({
     tagName: 'section',
     className: 'library',
@@ -116,31 +90,39 @@
     }
   });
 
-
-  window.PlaylistDeckView = Backbone.View.extend({
-    tag: 'div',
-    className: 'deck-info',
+  window.DeckView = Backbone.View.extend({
+    tagName: 'li',
+    className: 'deck',
 
     initialize: function() {
       _.bindAll(this, 'render');
-
-      this.deck   = this.options.deck;
-      this.template = _.template($('#deck-info-template').html());
+      this.model.bind('change', this.render);
+      this.template = _.template($('#library-deck-template').html());
     },
 
     render: function() {
-      $(this.el).html(this.template(this.deck.toJSON()));
+      $(this.el).html(this.template(this.model.toJSON()));
       return this;
     }
   });
 
-  window.PlaylistView = Backbone.View.extend({
+  window.LibraryDeckView = DeckView.extend({
+    events: {
+      'click .queue.add': 'select'
+    },
+
+    select: function() {
+      this.collection.trigger('select', this.model);
+    }
+  });
+
+  window.PlayerView = Backbone.View.extend({
     tag: 'section',
-    className: 'playlist', //add css for this element
+    className: 'player', //add css for this element
 
     initialize: function() {
       _.bindAll(this, 'render', 'queueDeck', 'renderDeck');
-      this.template = _.template($ ('#playlist-template').html());
+      this.template = _.template($ ('#player-template').html());
 
       this.player = this.options.player;
       this.player.bind('change', this.renderDeck);
@@ -155,7 +137,7 @@
     },
 
     renderDeck: function(deck) {
-      var view = new PlaylistDeckView({
+      var view = new PlayerDeckView({
         deck: this.player.currentDeck()
       });
       this.$('div').append(view.render().el);
@@ -166,6 +148,22 @@
     }
   });
 
+  window.PlayerDeckView = Backbone.View.extend({
+    tag: 'div',
+    className: 'deck-info',
+
+    initialize: function() {
+      _.bindAll(this, 'render');
+
+      this.deck   = this.options.deck;
+      this.template = _.template($('#player-deck-template').html());
+    },
+
+    render: function() {
+      $(this.el).html(this.template(this.deck.toJSON()));
+      return this;
+    }
+  });
 
   //--------------------------------------------------------------
   //         Routers
@@ -176,7 +174,7 @@
     },
 
     initialize: function() {
-      this.playlistView = new PlaylistView({
+      this.playlistView = new PlayerView({
         collection: window.player.playlist,
         player:     window.player,
         library:    window.library
