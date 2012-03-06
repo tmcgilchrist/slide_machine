@@ -14,6 +14,8 @@ at all.
 * integrate Riak single node into application
 * retrieve slide contents from riak backend.
 
+{% codeblock lang:javascript %}
+
     slide
         id
         contents/json
@@ -25,6 +27,8 @@ at all.
             content : { json }
         }
     }
+
+{% endcodeblock %}
 
 * integration tests for OTP applications? Need something!
 * how can I compile and reload resources without killing erl?
@@ -71,50 +75,52 @@ You should find in this directory:
  https://github.com/eproxus/meck
 
 Basically the root url shows a preview collection of slide decks
-|------------------------------------------------------------
-|                                                           |
-|      |------|              |------|                       |
-|      | deck |              | deck |                       |
-|      |------|              |------|                       |
-|                                                           |
-|                                                           |
-|      |------|              |------|                       |
-|      | deck |              | deck |                       |
-|      |------|              |------|                       |
-|                                                           |
-|                                                           |
-|      |------|              |------|                       |
-|      | deck |              | deck |                       |
-|      |------|              |------|                       |
-|                                                           |
-|------------------------------------------------------------
+
+
+    |------------------------------------------------------------
+    |                                                           |
+    |      |------|              |------|                       |
+    |      | deck |              | deck |                       |
+    |      |------|              |------|                       |
+    |                                                           |
+    |                                                           |
+    |      |------|              |------|                       |
+    |      | deck |              | deck |                       |
+    |      |------|              |------|                       |
+    |                                                           |
+    |                                                           |
+    |      |------|              |------|                       |
+    |      | deck |              | deck |                       |
+    |      |------|              |------|                       |
+    |                                                           |
+    |------------------------------------------------------------
 
 
 Clicking on a deck brings you to Overview of Deck.
  show author, summary and TOC ie slide names.
-|------------------------------------------------------------
-|            |                                              |
-| Title      |          Current Slide                       |
-| 1.         |                                              |
-| 2.         |                                              |
-| 3.         |                                              |
-| etc        |                                              |
-|            |                                              |
-|            |                                              | ===> next slide
-|            |                                              |
-|            |                                              |
-|            |                                              |
-|            |                                              |
-|            |                                              |
-|            |                                              |
-|            |                                              |
-|            |           footer: Title                      |
-|------------------------------------------------------------
+
+    |------------------------------------------------------------
+    |            |                                              |
+    | Title      |          Current Slide                       |
+    | 1.         |                                              |
+    | 2.         |                                              |
+    | 3.         |                                              |
+    | etc        |                                              |
+    |            |                                              |
+    |            |                                              | ===> next slide
+    |            |                                              |
+    |            |                                              |
+    |            |                                              |
+    |            |                                              |
+    |            |                                              |
+    |            |                                              |
+    |            |                                              |
+    |            |           footer: Title                      |
+    |------------------------------------------------------------
 
 You can click on each slide on the side to go to that one.
 
 There is a backwards and forwards buttons to navigate.
-
 
 Deck => individual presentation, contains many slides
 Slide => individual page in a presentation
