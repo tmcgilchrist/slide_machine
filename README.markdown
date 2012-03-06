@@ -14,22 +14,6 @@ at all.
 * integrate Riak single node into application
 * retrieve slide contents from riak backend.
 
-{% codeblock lang:javascript %}
-
-    slide
-        id
-        contents/json
-        next/link
-        previous/link
-
-    { slide : {
-        name: String
-            content : { json }
-        }
-    }
-
-{% endcodeblock %}
-
 * integration tests for OTP applications? Need something!
 * how can I compile and reload resources without killing erl?
 * need way of packaging javascript (CURRENT)
