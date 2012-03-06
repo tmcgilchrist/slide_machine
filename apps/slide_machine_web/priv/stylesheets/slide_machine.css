@@ -15,6 +15,13 @@ body {
     color: #999;
 }
 
+.deck-info .deck-author {
+    font-style: normal;
+    font-size: small;
+    font-weight: lighter;
+    color: #999;
+}
+
 .deck button.queue {
 }
 

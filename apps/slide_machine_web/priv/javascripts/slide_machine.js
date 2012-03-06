@@ -54,9 +54,6 @@
     url: '/decks'
   });
 
-  window.Playlist = Decks.extend({
-  });
-
   window.library = new Decks();
   window.player = new Player();
 
@@ -118,7 +115,7 @@
 
   window.PlayerView = Backbone.View.extend({
     tag: 'section',
-    className: 'player', //add css for this element
+    className: 'player',
 
     initialize: function() {
       _.bindAll(this, 'render', 'queueDeck', 'renderDeck');

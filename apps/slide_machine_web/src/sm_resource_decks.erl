@@ -22,7 +22,16 @@ to_json(ReqData, State) ->
     JsonDoc = "[{ \"title\": \"Webmachine Rocks!\",
                   \"author\": \"Basho\",
                   \"summary\": \"Webmachine is a toolkit for building RESTful web applications.\",
-                  \"slides\": []
+                  \"slides\": [ {
+                    \"title\": \"Introducing Webmachine\",
+                    \"content\": \"Introductory material\"
+                  }, {
+                    \"title\": \"Why?\",
+                    \"content\": \"Cause Erlang deserves web frameworks.\"
+                  }, {
+                    \"title\": \"Where?\",
+                    \"content\": \"Basho\"
+                  }]
                 },{
                   \"title\": \"Jasmine for the testing\",
                   \"author\": \"Pivotal Labs\",

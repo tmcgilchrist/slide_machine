@@ -41,14 +41,13 @@
 
     <script type="text/template" id="player-deck-template">
        <div class="deck-title"><%= title %></div>
-       <div class="deck-author">Author: <%= author %></div>
+       <div class="deck-author"><%= author %></div>
        <div class="deck-summary"><%= summary %></div>
-    </script>
-
-    <!-- Display contents of a single slide -->
-    <script type="text/template" id="slide-template">
-      <span class="slide-title"><%= title %></span>
-      <div id="slide-contents"><%= contents %></span>
+       <ol class="slides">
+        <% _.each(slides, function(slide) { %>
+          <li><%= slide.title %></li>
+        <% }); %>
+       </ol>
     </script>
 
     <script type="application/javascript">
