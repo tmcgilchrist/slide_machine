@@ -11,12 +11,18 @@ at all.
 * author => author of a particular deck of slides
 
 #### TODO
-* integrate Riak single node into application
-* retrieve slide contents from riak backend.
+##### Integrate Riak - retrieve slide contents from riak backend.
 
+- store data in external riak process.
+- load riak configuration from config file.
+- configure some sort of load balancing
+
+* look at how to bundle a markdown parser in a library or application?
+
+* integrate Riak single node into application?
 * integration tests for OTP applications? Need something!
 * how can I compile and reload resources without killing erl?
-* need way of packaging javascript (CURRENT)
+* need way of packaging javascript
 * start with modeling a basic slide and presenting it using backbone.js and
   html.
 * backbone.js UI presenting a deck
@@ -53,7 +59,13 @@ You should find in this directory:
  * [CloudEdit with Erlang and Webmachine P1](http://blog.erlware.org/2011/02/08/ecloudedit-erlang-webmachine-and-backbone-js/)
  * [CloudEdit with Erlang and Webmachine P2](http://blog.erlware.org/2011/02/12/ecloudedit-part-2-couchdb/)
  * [Webmachine, ErlyDTL and Riak by OJ](http://buffered.io/2010/10/13/webmachine-erlydtl-and-riak-part-3/)
-
+ * [Erlang rebar tutorial: generating releases and upgrades](http://www.metabrew.com/article/erlang-rebar-tutorial-generating-releases-upgrades)
+ * [Erlang/OTP releases: rebar, release_handler, .appup, etc](http://www.metabrew.com/article/erlangotp-releases-rebar-release_handler-appup-etc)
+ * [Essential JavaScript Design Patterns](https://github.com/addyosmani/essential-js-design-patterns)
+ * [Backbone Fundamentals](https://github.com/addyosmani/backbone-fundamentals)
+ * [Chaplin: A Sample Application Architecture Using Backbone.js](https://github.com/moviepilot/chaplin)
+ * [E2 Project](http://e2project.org/otp_primer.html)
+ * [Backbone new aggregator](http://blog.topics.io/2012/03/15/how-build-news-aggregator-backbonejs-part-1/)
 ### Erlang Testing ###
 
  https://github.com/eproxus/meck
@@ -124,3 +136,28 @@ don't need.
  Javascript Questions:
 
  - what is the pattern for JS object initialisation? How does it interact with JSON?
+
+ Riak Questions:
+
+- how  should the data modeling work?
+
+
+
+
+Get the keys
+
+curl -v http://127.0.0.1:8098/buckets/decks/keys?keys=true
+
+
+Keep everything in a single bucket.
+
+eg /riak/decks/
+
+Within a Deck we have all the slides as a single document, for now!
+
+ OTP Architecture Questions:
+ - where do I start the core app from? does the web start it or do I need a
+   supervisor for both web and core?
+ - add rebar target to generate a release and start that up.
+ - draw diagram of supervision tree for app.
+ -

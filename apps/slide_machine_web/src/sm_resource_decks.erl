@@ -7,10 +7,10 @@
 
 -include_lib("webmachine/include/webmachine.hrl").
 
--record(context, {db}).
+-record(state, {}).
 
 init([]) ->
-    {ok,{}}.
+    {ok, #state{}}.
 
 allowed_methods(ReqData, State) ->
     {['HEAD', 'GET'], ReqData, State}.
@@ -24,20 +24,11 @@ to_json(ReqData, State) ->
     case wrq:path_info(id, ReqData) of
         undefined ->
             % Return all decks
-            All = "[{ title: 'Webmachine Rocks!', author: 'Basho',
-                      summary: 'Webmachine is a toolkit for building RESTful web applications.',
-                      slides: [ { title: 'Introducing Webmachine', content: 'Introductory material' },
-                                { title: 'Why?', content: 'Cause Erlang deserves web frameworks.'   },
-                                { title: 'Where?', content: 'Basho' }] },
-                    { title: 'Jasmine for the testing', author: 'Pivotal Labs',
-                      summary: 'Jasmine is a TDD style framework influenced by rspec.',
-                      slides: []
-                    }
-                   ]",
-            {All, ReqData, State};
-        _ID ->
+            {found_all_decks, JsonDoc} = slide_machine_core_server:find_all_decks(),
+            {JsonDoc, ReqData, State};
+        Id ->
             % Find a deck by id
-            JsonDoc = "[{title: 'Webmachine', author: 'George', summary: 'Webmachine plus George is unstoppable.'}]",
+            {found_deck, JsonDoc} = slide_machine_core_server:find_deck(Id),
             {JsonDoc, ReqData, State}
     end.
 

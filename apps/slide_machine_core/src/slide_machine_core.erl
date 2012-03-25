@@ -13,6 +13,7 @@ ensure_started(App) ->
 
 start_link() ->
     ensure_started(crypto),
+    ensure_started(pooler),
     slide_machine_core_sup:start_link().
 
 start() ->
@@ -21,5 +22,6 @@ start() ->
 
 stop() ->
     Res = application:stop(slide_machine_core),
+    application:stop(pooler),
     application:stop(crypto),
     Res.
