@@ -20,6 +20,9 @@ clean:
 distclean: clean
 	@./rebar delete-deps
 
+test: all
+	@./rebar eunit skip_deps=true
+
 webstart: app
 	exec erl -pa $(PWD)/apps/*/ebin -pa $(PWD)/deps/*/ebin -boot start_sasl -config $(PWD)/apps/slide_machine_core/priv/app.config -s reloader -s slide_machine_core -s slide_machine_web
 
