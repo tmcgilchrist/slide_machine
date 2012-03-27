@@ -2,6 +2,8 @@
 -behaviour(gen_server).
 -define(SERVER, ?MODULE).
 
+-define(BUCKET, <<"decks">>).
+
 %% ------------------------------------------------------------------
 %% API Function Exports
 %% ------------------------------------------------------------------
@@ -36,9 +38,11 @@ init(Args) ->
     {ok, Args}.
 
 % Handle a find_deck :id
-handle_call({find_deck, Id}, _From, State) ->
-    io:format("find_deck ~p\n", [Id]),
-    JsonDoc = "[{title: 'Webmachine', author: 'George', summary: 'Webmachine plus George is unstoppable.'}]",
+handle_call({find_deck, Key}, _From, State) ->
+    {ok, RiakObj} = pooler:use_member(fun(RiakPid) ->
+                                              riakc_pb_socket:get(RiakPid, ?BUCKET, Key)
+                                      end),
+    JsonDoc = riakc_obj:get_value(RiakObj),
     {reply, {found_deck, JsonDoc}, State};
 
 handle_call({find_all_decks}, _From, State) ->
@@ -52,6 +56,7 @@ handle_call({find_all_decks}, _From, State) ->
               summary: 'Jasmine is a TDD style framework influenced by rspec.',
               slides: []
             }]",
+    %% TODO How should we return all the decks?
     {reply, {found_all_decks, All}, State};
 
 handle_call(_Request, _From, State) ->

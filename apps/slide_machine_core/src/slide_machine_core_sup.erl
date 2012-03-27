@@ -1,6 +1,5 @@
-
 -module(slide_machine_core_sup).
-
+-author('Tim McGilchrist <timmcgil@gmail.com>').
 -behaviour(supervisor).
 
 %% API
