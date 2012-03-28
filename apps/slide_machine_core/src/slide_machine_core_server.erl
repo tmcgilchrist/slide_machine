@@ -46,17 +46,9 @@ handle_call({find_deck, Key}, _From, State) ->
     {reply, {found_deck, JsonDoc}, State};
 
 handle_call({find_all_decks}, _From, State) ->
-    io:format("find_all_decks\n", []),
-    All = "[{ title: 'Webmachine Rocks!', author: 'Basho',
-              summary: 'Webmachine is a toolkit for building RESTful web applications.',
-              slides: [ { title: 'Introducing Webmachine', content: 'Introductory material' },
-                        { title: 'Why?', content: 'Cause Erlang deserves web frameworks.'   },
-                        { title: 'Where?', content: 'Basho' }] },
-            { title: 'Jasmine for the testing', author: 'Pivotal Labs',
-              summary: 'Jasmine is a TDD style framework influenced by rspec.',
-              slides: []
-            }]",
-    %% TODO How should we return all the decks?
+    {ok, All} = pooler:use_member(fun(RiakPid) ->
+                                    find_all(RiakPid)
+                            end),
     {reply, {found_all_decks, All}, State};
 
 handle_call(_Request, _From, State) ->
@@ -77,3 +69,14 @@ code_change(_OldVsn, State, _Extra) ->
 %% ------------------------------------------------------------------
 %% Internal Function Definitions
 %% ------------------------------------------------------------------
+
+find_all(RiakPid) ->
+    {ok, Keys} = riakc_pb_socket:list_keys(RiakPid, ?BUCKET),
+    {ok, find(Keys, RiakPid)}.
+
+find([Key|Keys], RiakPid) ->
+    {ok, Obj} = riakc_pb_socket:get(RiakPid, ?BUCKET, Key),
+    Json = riakc_obj:get_value(Obj),
+    [Json | find(Keys, RiakPid)];
+find([], _Pid) ->
+    [].
