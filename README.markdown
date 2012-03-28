@@ -13,15 +13,9 @@ at all.
 #### TODO
 ##### Integrate Riak - retrieve slide contents from riak backend.
 
-- store data in external riak process.
-- load riak configuration from config file.
-- configure some sort of load balancing
-
 * look at how to bundle a markdown parser in a library or application?
 
-* integrate Riak single node into application?
 * integration tests for OTP applications? Need something!
-* how can I compile and reload resources without killing erl?
 * need way of packaging javascript
 * start with modeling a basic slide and presenting it using backbone.js and
   html.
@@ -66,6 +60,7 @@ You should find in this directory:
  * [Chaplin: A Sample Application Architecture Using Backbone.js](https://github.com/moviepilot/chaplin)
  * [E2 Project](http://e2project.org/otp_primer.html)
  * [Backbone new aggregator](http://blog.topics.io/2012/03/15/how-build-news-aggregator-backbonejs-part-1/)
+
 ### Erlang Testing ###
 
  https://github.com/eproxus/meck
@@ -160,4 +155,15 @@ Within a Deck we have all the slides as a single document, for now!
    supervisor for both web and core?
  - add rebar target to generate a release and start that up.
  - draw diagram of supervision tree for app.
- -
+
+
+### Supervision Tree
+
+ slide_machine_core                  slide_machine_web              pool (riak)
+       |                                    |                          |
+       |                                    |                          |
+ slide_machine_core_sup              slide_machine_web_sup         pooler_sup
+       |                                    |                          |
+       |                                    |                       -------------------
+ slide_machine_core_server           slide_machine_web_server       |                 |
+                                                                 pooler_pool_sup  pooler
